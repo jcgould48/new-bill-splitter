@@ -1,34 +1,42 @@
 //Bill Spit Calculator
 
+
 function billSplitCalc(bill, tipPercentage, numberOfSplits) {
     if (tipPercentage > 0) {
-        let withTip = bill + tipPercentage * bill / 100;
-        return `$${total = withTip / numberOfSplits} each`;
+        let withTip = bill * (1+tipConverter(tipPercentage));
+        
+        return '$' + (total = withTip / numberOfSplits) + reaction(bill , numberOfSplits);
+
     } else {
         return `$${total = bill / numberOfSplits} each`;
-    }
+    }}
+
+
+function tipConverter(tipPercentage){
+    if (tipPercentage>1){
+    return tipPercentage/100;}
+    else if (tipPercentage===undefined){
+        return 0;
+}else {
+    return tipPercentage;
+}
 }
 
 
+function reaction(bill, numberOfSplits) {
+    if (bill >200 && numberOfSplits > 1){
+        return (" per person. Daaaamn, you have expensive friends!")
+        }else if (bill<5){
+            return (" per person. Be the hero and just cover the whole thing.")
+        } else if (isNaN(bill)){
+            return ('Numbers are hard');
+        } 
+        else
+        {
+            return (" per person.");
+        }
+}
 
-
-
-// function calculate (bill, tipPercentage, numberOfSplits){
-
-// // const bill = calc[2];
-// // const tipPercentage = calc [3];
-// // const numberOfSplits = calc [4];
-// // console.log(bill, tipPercentage, numberOfSplits)
-
-// function tipConverter(tipPercentage){
-//     if (tipPercentage>1){
-//     return tipPercentage/100;}
-//     else if (tipPercentage===undefined){
-//         return 0;
-// }else {
-//     return tipPercentage;
-// }
-// }
 
 // function splitConverter(numberOfSplits){
 //     if (numberOfSplits === undefined || numberOfSplits===0){
@@ -59,4 +67,15 @@ function billSplitCalc(bill, tipPercentage, numberOfSplits) {
 //     console.log('$' + personalBill + " per person.");
 // }
 
+// }
+
+
+// function billSplitCalc(bill, tipPercentage, numberOfSplits) {
+//     if (tipPercentage > 0) {
+//         let withTip = bill + tipPercentage * bill / 100;
+//         return `$${total = withTip / numberOfSplits} each`;
+
+//     } else {
+//         return `$${total = bill / numberOfSplits} each`;
+//     }
 // }
